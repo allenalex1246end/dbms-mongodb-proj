@@ -1,32 +1,61 @@
-# Simple MongoDB Python App
+# Sales App (MongoDB + Flask)
 
-This is a small command-line application that stores sales records in MongoDB.
+This project is a full-stack sales tracker with:
+
+- Flask backend API
+- MongoDB storage
+- Browser frontend (HTML, CSS, JavaScript)
 
 ## Features
 
-- Create sale records
-- Read/list sales
-- Update sale price
-- Delete sales
+- Create, list, update, and delete sales
+- Automatic total calculation (`quantity * price`)
+- Real-time table updates in the UI
 
-## Requirements
+## Project Structure
 
-- Python 3.10+
-- MongoDB running locally or a MongoDB Atlas connection string
+```text
+sales_app/
+	app.py
+	requirements.txt
+	.env.example
+	templates/
+		index.html
+	static/
+		styles.css
+		app.js
+```
 
 ## Setup
 
-1. Install dependencies:
-   ```powershell
-   pip install -r requirements.txt
-   ```
-2. Copy `.env.example` to `.env` and set your MongoDB connection string:
-   ```powershell
-   copy .env.example .env
-   ```
-3. Run the app:
-   ```powershell
-   python app.py
-   ```
+1. Create and activate a virtual environment.
+2. Install dependencies:
 
-If `MONGODB_URI` is not set, the app defaults to `mongodb://localhost:27017`.
+```bash
+pip install -r requirements.txt
+```
+
+3. Copy environment values:
+
+```bash
+copy .env.example .env
+```
+
+4. Edit `.env` and set your MongoDB URI.
+
+## Run
+
+```bash
+python app.py
+```
+
+Open `http://127.0.0.1:5000` in your browser.
+
+## API Endpoints
+
+- `GET /api/health`
+- `GET /api/sales`
+- `POST /api/sales`
+- `PUT /api/sales/<sale_id>`
+- `DELETE /api/sales/<sale_id>`
+

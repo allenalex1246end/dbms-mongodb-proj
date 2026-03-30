@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+
+<body>
+    <div class="background-art" aria-hidden="true"></div>
+    <main class="page">
+        <header class="hero">
+            <h1>Sales Dashboard</h1>
+            <p>Track products, quantities, and revenue in real time.</p>
+        </header>
+
+        <section class="card form-card">
+            <h2 id="form-title">Add Sale</h2>
+            <form id="sale-form">
+                <input type="hidden" id="sale-id" />
+
+                <label for="product">Product</label>
+                <input id="product" name="product" type="text" placeholder="Product name" required />
+
+                <div class="field-grid">
+                    <div>
+                        <label for="quantity">Quantity</label>
+                        <input id="quantity" name="quantity" type="number" min="1" step="1" required />
+                    </div>
+                    <div>
+                        <label for="price">Price</label>
+                        <input id="price" name="price" type="number" min="0.01" step="0.01" required />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button id="submit-btn" type="submit">Create Sale</button>
+                    <button id="cancel-btn" type="button" class="secondary hidden">Cancel Edit</button>
+                </div>
+            </form>
+            <p id="status-message" class="status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="card table-card">
+            <div class="table-head">
+                <h2>Recent Sales</h2>
+                <button id="refresh-btn" class="secondary">Refresh</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sales-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="summary-grid">
+            <article class="card small-table-card">
+                <div class="table-head">
+                    <h2>Product Summary</h2>
+                </div>
+                <div class="table-wrap">
+                    <table class="compact-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Units Sold</th>
+                                <th>Revenue</th>
+                                <th>Avg Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-summary-body"></tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="card small-table-card">
+                <div class="table-head">
+                    <h2>Daily Revenue</h2>
+                </div>
+                <div class="table-wrap">
+                    <table class="compact-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Transactions</th>
+                                <th>Units</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="daily-summary-body"></tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+
+</html>
